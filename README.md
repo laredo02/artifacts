@@ -1,2 +1,2 @@
 # artifacts
-Old and new, unfinished prohjects and proofs of concept
+Old and new, unfinished projects and proofs of concept
