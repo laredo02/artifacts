@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="WeatherStation">
+	
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jars.dir" value="${build.dir}/jars"/>
+	<property name="libs.dir" value="libs"/>
+
+	<property name="main-class" value="main.Main"/>
+
+	<path id="classpath">
+		<fileset dir="${libs.dir}" includes="*.jar"/>
+	</path>
+
+	<target name="clear">
+		<echo>${ant.project.name}</echo>
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<target name="build">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+		<mkdir dir="${jars.dir}"/>
+		<jar destfile="${jars.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}"/>
+			</manifest>
+		</jar>
+	</target>
+		
+	<target name="run">
+		<java fork="true" classname="${main-class}">
+			<classpath>
+				<path refid="classpath"/>
+				<path location="${jars.dir}/${ant.project.name}.jar"/>
+			</classpath>
+		</java>
+	</target>
+	
+</project>

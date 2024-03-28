@@ -1,0 +1,14 @@
+#include <fstream>
+
+int main () {
+  
+  const char *filename = "foobar.txt";
+  
+  std::fstream filestream;
+  filestream.open(filename, std::fstream::in | std::fstream::out | std::fstream::binary);
+  filestream << "asd";
+
+  filestream.close();
+  
+  return 0;
+}

@@ -1,0 +1,3 @@
+/home/miguel/Coding/OpenCV/MatImageContainer/CMakeFiles/rebuild_cache.dir
+/home/miguel/Coding/OpenCV/MatImageContainer/CMakeFiles/edit_cache.dir
+/home/miguel/Coding/OpenCV/MatImageContainer/CMakeFiles/DisplayImage.dir

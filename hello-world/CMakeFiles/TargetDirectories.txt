@@ -1,0 +1,3 @@
+/home/miguel/Coding/OpenCV/HelloWorld/CMakeFiles/rebuild_cache.dir
+/home/miguel/Coding/OpenCV/HelloWorld/CMakeFiles/edit_cache.dir
+/home/miguel/Coding/OpenCV/HelloWorld/CMakeFiles/DisplayImage.dir

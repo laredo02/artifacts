@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+ <head> 
+  <meta charset="utf-8"> 
+  <title>Weather Station</title> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: rgba(255, 255, 255, 0.8);
+      background: #161616;
+      text-align: center;
+    }
+
+    .header {
+      position: relative;
+      background: url(../rsc/header.jpg) no-repeat bottom center;
+      background-attachment: fixed;
+      background-size: cover;
+      text-align: center;
+      font-size: 250%;
+      padding: 15%;
+    }
+
+    .wrapper {
+      background-color: rgb(255, 255, 255, 0.8);
+      height: auto;
+      text-align: center;
+      padding: 5%;
+    }
+
+    table {
+      width: 100%;
+      color: rgb(0, 0, 0, 0.8);
+      font-size: 150%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border-collapse: collapse;
+      border: 1px solid #161616;
+    }
+
+    th, td {
+      text-align: center;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;} 
+
+    a {
+      background-color: #70AA7E;
+      padding: 5px;
+      text-decoration: none;
+      color: #E8E8E8;
+      border-radius: 3px;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <div class="header"> 
+   <h1 class="title">Weather Station</h1> 
+  </div> 
+  <div class="wrapper"> 
+   <div class="today-overview" id="today-overview">
+    <table class="yr-table yr-table-overview2 yr-popup-area" summary=""> 
+     <caption> 
+      <strong>Today, </strong>Monday 29/07/2019 
+     </caption> 
+     <colgroup width="60"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="80"></colgroup> 
+     <colgroup></colgroup> 
+     <thead> 
+      <tr> 
+       <th scope="col">Time</th> 
+       <th scope="col">Forecast</th> 
+       <th scope="col"> <abbr title="Temperature">Temp.</abbr> </th> 
+       <th scope="col">Precipitation</th> 
+       <th scope="col">Wind</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td> 00:00–06:00</td> 
+       <td title="Fair. For the period: 00:00–06:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s02n" xmlns=""></use> 
+          <image alt="Fair.  " src="/grafikk/sym/v2017/png/38/02n.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Fair. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 23°.  Feels like 23°.  For the period: 00:00">23°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 00:00–06:00.  ">0 mm</td> 
+       <td class="txt-left" title="Gentle breeze, 4 m/s from east-northeast.  For the period: 00:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.070.png" class="wind" alt="Gentle breeze, 4 m/s from east-northeast">Gentle breeze, 4 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 06:00–12:00</td> 
+       <td title="Clear sky. For the period: 06:00–12:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s01d" xmlns=""></use> 
+          <image alt="Clear sky.  " src="/grafikk/sym/v2017/png/38/01d.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Clear sky. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 21°.  Feels like 21°.  For the period: 06:00">21°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 06:00–12:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light breeze, 3 m/s from east-northeast.  For the period: 06:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.065.png" class="wind" alt="Light breeze, 3 m/s from east-northeast">Light breeze, 3 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 12:00–18:00</td> 
+       <td title="Partly cloudy. For the period: 12:00–18:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s03d" xmlns=""></use> 
+          <image alt="Partly cloudy.  " src="/grafikk/sym/v2017/png/38/03d.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Partly cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 28°.  Feels like 28°.  For the period: 12:00">28°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 12:00–18:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from east.  For the period: 12:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.090.png" class="wind" alt="Light breeze, 2 m/s from east">Light breeze, 2 m/s from east</td> 
+      </tr> 
+      <tr> 
+       <td> 18:00–00:00</td> 
+       <td title="Partly cloudy. For the period: 18:00–00:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s03d" xmlns=""></use> 
+          <image alt="Partly cloudy.  " src="/grafikk/sym/v2017/png/38/03d.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Partly cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 30°.  Feels like 30°.  For the period: 18:00">30°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 18:00–00:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from west.  For the period: 18:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.260.png" class="wind" alt="Light breeze, 2 m/s from west">Light breeze, 2 m/s from west</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table class="yr-table yr-table-overview2 yr-popup-area" summary=""> 
+     <caption> 
+      <strong>Tomorrow, </strong>Tuesday 30/07/2019 
+     </caption> 
+     <colgroup width="60"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="80"></colgroup> 
+     <colgroup></colgroup> 
+     <thead> 
+      <tr> 
+       <th scope="col">Time</th> 
+       <th scope="col">Forecast</th> 
+       <th scope="col"> <abbr title="Temperature">Temp.</abbr> </th> 
+       <th scope="col">Precipitation</th> 
+       <th scope="col">Wind</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td> 00:00–06:00</td> 
+       <td title="Partly cloudy. For the period: 00:00–06:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s03n" xmlns=""></use> 
+          <image alt="Partly cloudy.  " src="/grafikk/sym/v2017/png/38/03n.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Partly cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 25°.  Feels like 25°.  For the period: 00:00">25°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 00:00–06:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from southeast.  For the period: 00:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.140.png" class="wind" alt="Light breeze, 2 m/s from southeast">Light breeze, 2 m/s from southeast</td> 
+      </tr> 
+      <tr> 
+       <td> 06:00–12:00</td> 
+       <td title="Cloudy. For the period: 06:00–12:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 22°.  Feels like 22°.  For the period: 06:00">22°</td> 
+       <td title="Precipitation: 0 – 1.6 mm.  For the period: 06:00–12:00.  ">0 – 1.6 mm</td> 
+       <td class="txt-left" title="Light air, 1 m/s from east-northeast.  For the period: 06:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0000.070.png" class="wind" alt="Light air, 1 m/s from east-northeast">Light air, 1 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 12:00–18:00</td> 
+       <td title="Rain. For the period: 12:00–18:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s09" xmlns=""></use> 
+          <image alt="Rain.  " src="/grafikk/sym/v2017/png/38/09.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Rain. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 17°.  Feels like 17°.  For the period: 12:00">17°</td> 
+       <td title="Precipitation: 0.9 – 3.4 mm.  For the period: 12:00–18:00.  ">0.9 – 3.4 mm</td> 
+       <td class="txt-left" title="Gentle breeze, 5 m/s from east-northeast.  For the period: 12:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0050.060.png" class="wind" alt="Gentle breeze, 5 m/s from east-northeast">Gentle breeze, 5 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 18:00–00:00</td> 
+       <td title="Cloudy. For the period: 18:00–00:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 16°.  Feels like 16°.  For the period: 18:00">16°</td> 
+       <td title="Precipitation: 0 – 0.3 mm.  For the period: 18:00–00:00.  ">0 – 0.3 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from north-northeast.  For the period: 18:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.025.png" class="wind" alt="Light breeze, 2 m/s from north-northeast">Light breeze, 2 m/s from north-northeast</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table class="yr-table yr-table-overview2 yr-popup-area" summary=""> 
+     <caption> 
+      <strong>Wednesday, </strong>31/07/2019 
+     </caption> 
+     <colgroup width="60"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="50"></colgroup> 
+     <colgroup width="80"></colgroup> 
+     <colgroup></colgroup> 
+     <thead> 
+      <tr> 
+       <th scope="col">Time</th> 
+       <th scope="col">Forecast</th> 
+       <th scope="col"> <abbr title="Temperature">Temp.</abbr> </th> 
+       <th scope="col">Precipitation</th> 
+       <th scope="col">Wind</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td> 00:00–06:00</td> 
+       <td title="Cloudy. For the period: 00:00–06:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 16°.  Feels like 16°.  For the period: 00:00">16°</td> 
+       <td title="Precipitation: 0 – 0.3 mm.  For the period: 00:00–06:00.  ">0 – 0.3 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from east-northeast.  For the period: 00:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.060.png" class="wind" alt="Light breeze, 2 m/s from east-northeast">Light breeze, 2 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 06:00–12:00</td> 
+       <td title="Cloudy. For the period: 06:00–12:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 15°.  Feels like 15°.  For the period: 06:00">15°</td> 
+       <td title="Precipitation: 0 – 0.3 mm.  For the period: 06:00–12:00.  ">0 – 0.3 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from east-northeast.  For the period: 06:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.065.png" class="wind" alt="Light breeze, 2 m/s from east-northeast">Light breeze, 2 m/s from east-northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 14:00–20:00</td> 
+       <td title="Cloudy. For the period: 14:00–20:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 16°.  Feels like 16°.  For the period: 14:00">16°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 14:00–20:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light air, 1 m/s from northeast.  For the period: 14:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0000.045.png" class="wind" alt="Light air, 1 m/s from northeast">Light air, 1 m/s from northeast</td> 
+      </tr> 
+      <tr> 
+       <td> 20:00–02:00</td> 
+       <td title="Cloudy. For the period: 20:00–02:00"> 
+        <figure> 
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewbox="0 0 100 100" width="38" height="38" aria-hidden="true"> 
+          <use x="0" y="0" width="100" height="100" xlink:href="#s04" xmlns=""></use> 
+          <image alt="Cloudy.  " src="/grafikk/sym/v2017/png/38/04.png" width="38" height="38" xmlns="" /> 
+         </svg> 
+         <figcaption class="yr-visually-hidden">
+           Cloudy. 
+         </figcaption> 
+        </figure> </td> 
+       <td class="temperature plus" title="Temperature: 17°.  Feels like 17°.  For the period: 20:00">17°</td> 
+       <td title="Precipitation: 0 mm.  For the period: 20:00–02:00.  ">0 mm</td> 
+       <td class="txt-left" title="Light breeze, 2 m/s from north-northwest.  For the period: 20:00"> <img src="/grafikk/sym/vindpiler/32/vindpil.0025.340.png" class="wind" alt="Light breeze, 2 m/s from north-northwest">Light breeze, 2 m/s from north-northwest</td> 
+      </tr> 
+     </tbody> 
+    </table>
+   </div> 
+  </div> 
+  <footer class="footer"> 
+   <h3>Get in touch</h3> 
+   <p>miguel.laredo@mailo.com</p> 
+   <p>more info at <a target="_blank" href="https://www.yr.no/place/Norway/Oslo/Oslo/Oslo/">yr.no</a></p> 
+  </footer>  
+ </body>
+</html>

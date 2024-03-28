@@ -1,0 +1,3 @@
+/home/miguel/Coding/OpenCV/ImageScanner/CMakeFiles/rebuild_cache.dir
+/home/miguel/Coding/OpenCV/ImageScanner/CMakeFiles/edit_cache.dir
+/home/miguel/Coding/OpenCV/ImageScanner/CMakeFiles/DisplayImage.dir

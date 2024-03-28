@@ -1,0 +1,6 @@
+out_temp: 25
+out_hum: 30
+out_atm: 1.001
+in_temp: 24
+in_hum: 10
+in_atm: 0.999

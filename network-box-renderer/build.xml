@@ -1,0 +1,32 @@
+<project name="NetworkBoxRenderer">
+
+	<property name="out.dir" value="out"/>
+	<property name="classes.dir" value="${out.dir}/classes"/>
+	<property name="src.dir" value="src"/>
+	<property name="java.dir" value="${src.dir}/java"/>
+	<property name="jars.dir" value="${out.dir}/jars"/>
+	<property name="jar.file" value="${jars.dir}/NetworkBoxRenderer.jar"/>
+	<property name="main.class" value="out.classes.org.NetworkBoxRenderer"/>
+	<target name="clear">
+		<delete dir="${out.dir}"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${java.dir}" destdir="${classes.dir}"/>
+	</target>
+
+	<target name="mkjar">
+		<mkdir dir="${jars.dir}"/>
+		<jar destfile="${jar.file}" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main.class}"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run">
+		<java jar="${jar.file}" fork="true"/>
+	</target>
+
+</project>

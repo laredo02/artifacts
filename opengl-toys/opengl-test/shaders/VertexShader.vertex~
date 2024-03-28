@@ -1,0 +1,15 @@
+
+#version 460 core
+
+layout (location = 0) in vec4 in_Position;
+layout (location = 1) in vec4 in_color;
+
+smooth out vec4 frag_Color;
+
+uniform vec4 offset;
+
+void main () {
+     gl_Position = in_Position + offset;
+     frag_Color = in_color;
+}
+

@@ -1,0 +1,29 @@
+
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+
+#include <iostream>
+
+using namespace cv;
+
+int main () {
+  int ret = 0;
+  std::string path = samples::findFile("image.jpeg");
+  Mat img = imread(path, IMREAD_COLOR);
+  if (!img.empty()) {
+    imshow("DisplayWindow", img);
+    int key = waitKey(0);
+    if (key == 's')
+      imwrite("image.png", img);
+  } else {
+    std::cout << "ERROR: Failed to read image: " << path << std::endl;
+    ret = 1;
+  }
+  return ret;
+}
+
+
+
+
+
