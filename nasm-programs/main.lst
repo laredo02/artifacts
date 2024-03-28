@@ -1,0 +1,23 @@
+     1                                  
+     2                                  section .data
+     3 00000000 AAFF                    	num dw 0xFFAA
+     4                                  
+     5                                  section .bss
+     6                                  
+     7                                  section .text
+     8                                  	global _start
+     9                                  
+    10                                  _start:
+    11 00000000 55                      	push rbp
+    12 00000001 4889E5                  	mov rbp, rsp
+    13                                  
+    14 00000004 B800000000              	mov rax, 0
+    15 00000009 488B0425[00000000]      	mov rax, [num]
+    16                                  	
+    17 00000011 4889EC                  	mov rsp, rbp
+    18 00000014 5D                      	pop rbp
+    19                                  
+    20 00000015 B83C000000              	mov rax, 60
+    21 0000001A BF00000000              	mov rdi, 0
+    22 0000001F 0F05                    	syscall
+    23                                  

@@ -1,0 +1,36 @@
+     1                                  
+     2                                  section .data
+     3 00000000 6E756D203D2025640A-         fmtint db "num = %d", 0xA, 0
+     3 00000009 00                 
+     4 0000000A 7B000000                    num dd 123
+     5 0000000E 666C74203D2025660A-         fmtflt db "flt = %f", 0xa, 0
+     5 00000017 00                 
+     6 00000018 1F85EB51B81E0940            flt dq 3.14
+     7                                  
+     8                                  section .text
+     9                                      extern printf
+    10                                      global main
+    11                                  
+    12                                  main:
+    13 00000000 55                          push rbp
+    14 00000001 4889E5                      mov rbp, rsp ; prologue
+    15                                  
+    16 00000004 B800000000                  mov rax, 0
+    17 00000009 48BF-                       mov rdi, fmtint
+    17 0000000B [0000000000000000] 
+    18 00000013 488B3425[0A000000]          mov rsi, [num]
+    19 0000001B E8(00000000)                call printf
+    20                                  
+    21 00000020 B801000000                  mov rax, 1
+    22 00000025 F30F7E0425-                 movq xmm0, [flt]
+    22 0000002A [18000000]         
+    23 0000002E 48BF-                       mov rdi, fmtflt
+    23 00000030 [0E00000000000000] 
+    24 00000038 E8(00000000)                call printf
+    25                                  
+    26 0000003D 4889EC                      mov rsp, rbp ; epilogue
+    27 00000040 5D                          pop rbp
+    28                                  
+    29 00000041 B83C000000                  mov rax, 60 ; exit
+    30 00000046 BF00000000                  mov rdi, 0 ; exit code
+    31 0000004B 0F05                        syscall

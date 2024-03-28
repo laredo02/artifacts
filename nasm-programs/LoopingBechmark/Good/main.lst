@@ -1,0 +1,23 @@
+     1                                  
+     2                                  section .data
+     3 00000000 00F2052A01000000        	num dq 5000000000
+     4                                  
+     5                                  section .bss
+     6                                  section .text
+     7                                  	global main
+     8                                  
+     9                                  main:
+    10 00000000 55                      	push rbp
+    11 00000001 4889E5                  	mov rbp, rsp
+    12                                  
+    13 00000004 488B0C25[00000000]      	mov rcx, [num]
+    14                                  _loop:
+    15 0000000C E2FE                    	loop _loop
+    16                                  
+    17 0000000E 4889EC                  	mov rsp, rbp
+    18 00000011 5D                      	pop rbp
+    19                                  
+    20 00000012 B83C000000              	mov rax, 60
+    21 00000017 BF00000000              	mov rdi, 0
+    22 0000001C 0F05                    	syscall
+    23                                  

@@ -1,0 +1,51 @@
+     1                                  
+     2                                  section .data
+     3 00000000 7B                          bNum db 123
+     4 00000001 D204                        wNum dw 1234
+     5 00000003 39300000                    dNum dd 12345
+     6 00000007 40E2010000000000            qNum1 dq 123456
+     7 0000000F 50455254FB210940            qNum2 dq 3.141592654
+     8 00000017 0000<rep 5h>                warray times 5 dw 0
+     9 00000021 61626300                    text1 db "abc", 0
+    10 00000025 64656600                    text2 db "def", 0
+    11                                  
+    12                                  section .bss
+    13 00000000 ??                          bvar resb 1
+    14 00000001 ????????                    dvar resd 1
+    15 00000005 <res 14h>                   wvar resw 10
+    16 00000019 <res 18h>                   qvar resq 3
+    17                                  
+    18                                  section .text
+    19                                  	global main
+    20                                  
+    21                                  main:
+    22                                  prolog:
+    23 00000000 55                          push rbp
+    24 00000001 4889E5                      mov rbp, rsp
+    25                                  
+    26                                  memory:
+    27 00000004 488D0425[00000000]          lea rax, [bNum]
+    28 0000000C 48B8-                       mov rax, bNum
+    28 0000000E [0000000000000000] 
+    29 00000016 488B0425[00000000]          mov rax, [bNum]
+    30 0000001E 48890425[00000000]          mov [bvar], rax
+    31 00000026 488D0425[00000000]          lea rax, [bvar]
+    32 0000002E 488D0425[01000000]          lea rax, [wNum]
+    33 00000036 488B0425[01000000]          mov rax, [wNum]
+    34 0000003E 488D0425[21000000]          lea rax, [text1]
+    35 00000046 48B8-                       mov rax, text1
+    35 00000048 [2100000000000000] 
+    36 00000050 48B8-                       mov rax, text1+1
+    36 00000052 [2200000000000000] 
+    37 0000005A 488D0425[22000000]          lea rax, [text1+1]
+    38 00000062 488D0425[21000000]          lea rax, [text1]
+    39 0000006A 488B0425[22000000]          mov rax, [text1+1]
+    40                                  
+    41                                  epilog:
+    42 00000072 4889EC                      mov rsp, rbp
+    43 00000075 5D                          pop rbp
+    44                                  
+    45                                  terminate:
+    46 00000076 B83C000000                  mov rax, 60
+    47 0000007B 4831FF                      xor rdi, rdi
+    48 0000007E 0F05                        syscall

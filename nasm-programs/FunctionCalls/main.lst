@@ -1,0 +1,169 @@
+     1                                  
+     2                                  extern printf
+     3                                  
+     4                                  section .data
+     5 00000000 8000000000000000        	number1 dq 128
+     6 00000008 1300000000000000        	number2 dq 19
+     7 00000010 F4FFFFFFFFFFFFFF        	number3 dq -12
+     8 00000018 6E756D62657231203D-     	fmt db "number1 = %ld number2 = %ld", 0xA, 0
+     8 00000021 20256C64206E756D62-
+     8 0000002A 657232203D20256C64-
+     8 00000033 0A00               
+     9 00000035 6E756D62657231202B-     	fmtadd db "number1 + number2 = %ld", 0xa, 0
+     9 0000003E 206E756D6265723220-
+     9 00000047 3D20256C640A00     
+    10 0000004E 6E756D62657231202D-     	fmtsub db "number1 - number2 = %ld", 0xa, 0
+    10 00000057 206E756D6265723220-
+    10 00000060 3D20256C640A00     
+    11 00000067 6E756D626572312B2B-     	fmtinc db "number1++ = %ld", 0xa, 0
+    11 00000070 203D20256C640A00   
+    12 00000078 6E756D626572312D2D-     	fmtdec db "number1-- = %ld", 0xa, 0
+    12 00000081 203D20256C640A00   
+    13 00000089 6E756D62657231203C-     	fmtsal db "number1 << 2 %ld", 0xa, 0
+    13 00000092 3C203220256C640A00 
+    14 0000009B 6E756D62657231203E-     	fmtsar db "number1 >> 2 = %ld", 0xa, 0
+    14 000000A4 3E2032203D20256C64-
+    14 000000AD 0A00               
+    15 000000AF 6E756D62657233203C-     	fmtsalneg db "number3 << 2 = %ld", 0xa, 0
+    15 000000B8 3C2032203D20256C64-
+    15 000000C1 0A00               
+    16 000000C3 6E756D62657231202A-     	fmtimul db "number1 * number2 =  %ld", 0xa, 0
+    16 000000CC 206E756D6265723220-
+    16 000000D5 3D2020256C640A00   
+    17 000000DD 6E756D62657231202F-     	fmtidiv db "number1 / number2 =  %ld", 0xa, 0
+    17 000000E6 206E756D6265723220-
+    17 000000EF 3D2020256C640A00   
+    18 000000F7 6E756D626572312025-     	fmtmod db "number1 % number2 =  %ld", 0xa, 0
+    18 00000100 206E756D6265723220-
+    18 00000109 3D2020256C640A00   
+    19                                  
+    20                                  section .bss
+    21 00000000 ????????????????        	result resq 1
+    22 00000008 ????????????????        	module resq 1
+    23                                  
+    24                                  section .text
+    25                                  	global main
+    26                                  
+    27                                  main:
+    28                                  prolog:
+    29 00000000 55                      	push rbp
+    30 00000001 4889E5                  	mov rbp, rsp
+    31                                  
+    32                                  integers:
+    33 00000004 48BF-                   	mov rdi, fmt	
+    33 00000006 [1800000000000000] 
+    34 0000000E 488B3425[00000000]      	mov rsi, [number1]
+    35 00000016 488B1425[08000000]      	mov rdx, [number2]
+    36 0000001E 4831C0                  	xor rax, rax
+    37 00000021 E8(00000000)            	call printf
+    38                                  
+    39                                  ; add
+    40 00000026 488B0425[00000000]      	mov rax, [number1]
+    41 0000002E 48030425[08000000]      	add rax, [number2]
+    42 00000036 48890425[00000000]      	mov [result], rax
+    43                                  	; add sum
+    44 0000003E 48BF-                   	mov rdi, fmtadd
+    44 00000040 [3500000000000000] 
+    45 00000048 488B3425[00000000]      	mov rsi, [result]
+    46 00000050 4831C0                  	xor rax, rax
+    47 00000053 E8(00000000)            	call printf
+    48                                  ; sub
+    49 00000058 488B0425[00000000]      	mov rax, [number1]
+    50 00000060 482B0425[08000000]      	sub rax, [number2]
+    51 00000068 48890425[00000000]      	mov [result], rax
+    52                                  	; print sub
+    53 00000070 48BF-                   	mov rdi, fmtsub
+    53 00000072 [4E00000000000000] 
+    54 0000007A 488B3425[00000000]      	mov rsi, [result]
+    55 00000082 4831C0                  	xor rax, rax
+    56 00000085 E8(00000000)            	call printf
+    57                                  ; inc
+    58 0000008A 488B0425[00000000]      	mov rax, [number1]
+    59 00000092 48FFC0                  	inc rax
+    60 00000095 48890425[00000000]      	mov [result], rax
+    61                                  	; print inc
+    62 0000009D 48BF-                   	mov rdi, fmtinc
+    62 0000009F [6700000000000000] 
+    63 000000A7 488B3425[00000000]      	mov rsi, [result]
+    64 000000AF 4831C0                  	xor rax, rax
+    65 000000B2 E8(00000000)            	call printf
+    66                                  ; dec
+    67 000000B7 488B0425[00000000]      	mov rax, [number1]
+    68 000000BF 48FFC8                  	dec rax
+    69 000000C2 48890425[00000000]      	mov [result], rax
+    70                                  	; print dec
+    71 000000CA 48BF-                   	mov rdi, fmtdec
+    71 000000CC [7800000000000000] 
+    72 000000D4 488B3425[00000000]      	mov rsi, [result]
+    73 000000DC 4831C0                  	xor rax, rax
+    74 000000DF E8(00000000)            	call printf
+    75                                  ; sal
+    76 000000E4 488B0425[00000000]      	mov rax, [number1]
+    77 000000EC 48C1E002                	sal rax, 2
+    78 000000F0 48890425[00000000]      	mov [result], rax
+    79                                  	; print sal
+    80 000000F8 48BF-                   	mov rdi, fmtsal
+    80 000000FA [8900000000000000] 
+    81 00000102 488B3425[00000000]      	mov rsi, [result]
+    82 0000010A 4831C0                  	xor rax, rax
+    83 0000010D E8(00000000)            	call printf
+    84                                  ; sar
+    85 00000112 488B0425[00000000]      	mov rax, [number1]
+    86 0000011A 48C1F802                	sar rax, 2
+    87 0000011E 48890425[00000000]      	mov [result], rax
+    88                                  	; print sar
+    89 00000126 48BF-                   	mov rdi, fmtsar
+    89 00000128 [9B00000000000000] 
+    90 00000130 488B3425[00000000]      	mov rsi, [result]
+    91 00000138 4831C0                  	xor rax, rax
+    92 0000013B E8(00000000)            	call printf
+    93                                  
+    94                                  ; sal
+    95 00000140 488B0425[10000000]      	mov rax, [number3]
+    96 00000148 48C1E002                	sal rax, 2
+    97 0000014C 48890425[00000000]      	mov [result], rax
+    98                                  	; print sal
+    99 00000154 48BF-                   	mov rdi, fmtsalneg
+    99 00000156 [AF00000000000000] 
+   100 0000015E 488B3425[00000000]      	mov rsi, [result]
+   101 00000166 4831C0                  	xor rax, rax
+   102 00000169 E8(00000000)            	call printf
+   103                                  ; imul
+   104 0000016E 488B0425[00000000]      	mov rax, [number1]
+   105 00000176 48F72C25[08000000]      	imul qword [number2]
+   106 0000017E 48890425[00000000]      	mov [result], rax
+   107                                  	; print imul
+   108 00000186 48BF-                   	mov rdi, fmtimul
+   108 00000188 [C300000000000000] 
+   109 00000190 488B3425[00000000]      	mov rsi, [result]
+   110 00000198 4831C0                  	xor rax, rax
+   111 0000019B E8(00000000)            	call printf
+   112                                  ; idiv
+   113 000001A0 488B0425[00000000]      	mov rax, [number1]
+   114 000001A8 BA00000000              	mov rdx, 0
+   115 000001AD 48F73C25[08000000]      	idiv qword [number2]
+   116 000001B5 48890425[00000000]      	mov [result], rax
+   117                                  	; print idiv
+   118 000001BD 48BF-                   	mov rdi, fmtidiv
+   118 000001BF [DD00000000000000] 
+   119 000001C7 488B3425[00000000]      	mov rsi, [result]
+   120 000001CF 4831C0                  	xor rax, rax
+   121 000001D2 E8(00000000)            	call printf
+   122                                  ; mod
+   123 000001D7 48891425[08000000]      	mov [module], rdx
+   124                                  	; print mod
+   125 000001DF 48BF-                   	mov rdi, fmtmod
+   125 000001E1 [F700000000000000] 
+   126 000001E9 488B3425[08000000]      	mov rsi, [module]
+   127 000001F1 4831C0                  	xor rax, rax
+   128 000001F4 E8(00000000)            	call printf
+   129                                  
+   130                                  epilog:
+   131 000001F9 4889EC                  	mov rsp, rbp
+   132 000001FC 5D                      	pop rbp
+   133                                  
+   134                                  terminate:
+   135 000001FD B83C000000              	mov rax, 60
+   136 00000202 4831FF                  	xor rdi, rdi
+   137 00000205 0F05                    	syscall
+   138                                  

@@ -1,0 +1,79 @@
+     1                                  
+     2                                  extern printf
+     3                                  
+     4                                  section .data
+     5                                  
+     6 00000000 426164204C6F6F700A-         msg0 db "Bad Loop", 10, 0
+     6 00000009 00                 
+     7 0000000A 476F6F64204C6F6F70-         msg1 db "Good Loop", 10, 0
+     7 00000013 0A00               
+     8                                  
+     9 00000015 00E1F50500000000            num dq 100000000
+    10 0000001D 53756D2066726F6D20-         fmt db "Sum from 0 to %ld is %ld", 10, 0
+    10 00000026 3020746F20256C6420-
+    10 0000002F 697320256C640A00   
+    11                                  
+    12 00000037 0100000000000000            c1 dq 1
+    13 0000003F 0200000000000000            c2 dq 2
+    14                                  
+    15                                  section .bss
+    16                                  
+    17                                  section .text
+    18                                      global main
+    19                                  
+    20                                  main:
+    21 00000000 55                          push rbp
+    22 00000001 4889E5                      mov rbp, rsp ; prologue
+    23                                  
+    24 00000004 488B0425[37000000]          mov rax, [c1]
+    25 0000000C 488B1C25[3F000000]          mov rbx, [c2]
+    26 00000014 4839D8                      cmp rax, rbx
+    27 00000017 7458                        je good
+    28                                  
+    29 00000019 BB00000000                  mov rbx, 0 ; counter
+    30 0000001E B800000000                  mov rax, 0 ; sum
+    31 00000023 48BF-                       mov rdi, msg0
+    31 00000025 [0000000000000000] 
+    32 0000002D E8(00000000)                call printf
+    33                                  
+    34                                  bloop:
+    35 00000032 4801D8                      add rax, rbx
+    36 00000035 48FFC3                      inc rbx
+    37 00000038 483B1C25[15000000]          cmp rbx, [num]
+    38 00000040 7EF0                        jle bloop
+    39                                  
+    40 00000042 48BF-                       mov rdi, fmt
+    40 00000044 [1D00000000000000] 
+    41 0000004C 488B3425[15000000]          mov rsi, [num]
+    42 00000054 4889C2                      mov rdx, rax
+    43 00000057 B800000000                  mov rax, 0
+    44 0000005C E8(00000000)                call printf
+    45                                  
+    46 00000061 4889EC                      mov rsp, rbp ; epilogue
+    47 00000064 5D                          pop rbp
+    48                                  
+    49 00000065 B83C000000                  mov rax, 60 ; exit
+    50 0000006A BF00000000                  mov rdi, 0 ; exit code
+    51 0000006F 0F05                        syscall
+    52                                  
+    53                                  good:
+    54 00000071 B800000000                  mov rax, 0 ; sum
+    55 00000076 48BF-                       mov rdi, msg1
+    55 00000078 [0A00000000000000] 
+    56 00000080 E8(00000000)                call printf
+    57 00000085 488B0C25[15000000]          mov rcx, [num] ; counter
+    58 0000008D B800000000                  mov rax, 0
+    59                                  gloop:
+    60 00000092 4801C8                      add rax, rcx
+    61 00000095 E2FB                        loop gloop ; loop until rcx=0 (rcx-=1)
+    62                                  
+    63 00000097 48BF-                       mov rdi, fmt
+    63 00000099 [1D00000000000000] 
+    64 000000A1 488B3425[15000000]          mov rsi, [num]
+    65 000000A9 4889C2                      mov rdx, rax
+    66 000000AC B800000000                  mov rax, 0
+    67 000000B1 E8(00000000)                call printf
+    68                                  
+    69 000000B6 B83C000000                  mov rax, 60 ; exit
+    70 000000BB BF00000000                  mov rdi, 0 ; exit code
+    71 000000C0 0F05                        syscall

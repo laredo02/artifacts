@@ -1,0 +1,3 @@
+#!/bin/bash
+
+eval javac -classpath .:jimStlMeshImporterJFX.jar:/usr/local/share/java/opencv4/opencv-440.jar --module-path /opt/OpenJFX/openjfx-14.0.2.1_linux-x64_bin-sdk/javafx-sdk-14.0.2.1/lib --add-modules=javafx.controls,javafx.swing Main.java && java -classpath .:jimStlMeshImporterJFX.jar:/usr/local/share/java/opencv4/opencv-440.jar -Djava.library.path=/usr/local/share/java/opencv4 --module-path /opt/OpenJFX/openjfx-14.0.2.1_linux-x64_bin-sdk/javafx-sdk-14.0.2.1/lib --add-modules=javafx.controls,javafx.swing -Dprism.verbose=true -Dcom.sun.javafx.experimental.embedded.3d=true -Dprism.glDepthSize=24 -Dprism.forceGPU=true Main
