@@ -1,0 +1,40 @@
+     1                                  section .data
+     2 00000000 48656C6C6F2C20576F-     	text db "Hello, World!", 10, 0
+     2 00000009 726C64210A00       
+     3                                  
+     4                                  section .text
+     5                                  	global _start
+     6                                  
+     7                                  %macro exit 0
+     8                                  	mov rax, 60
+     9                                  	mov rdi, 0
+    10                                  	syscall
+    11                                  %endmacro
+    12                                  
+    13                                  _start:
+    14 00000000 48B8-                   	mov rax, text
+    14 00000002 [0000000000000000] 
+    15 0000000A E80C000000              	call _printString
+    16                                  
+    17                                  	exit
+    17 0000000F B83C000000          <1>  mov rax, 60
+    17 00000014 BF00000000          <1>  mov rdi, 0
+    17 00000019 0F05                <1>  syscall
+    18                                  
+    19                                  _printString:
+    20 0000001B 50                      	push rax
+    21 0000001C BB00000000              	mov rbx, 0
+    22                                  _printLoop:
+    23 00000021 48FFC0                  	inc rax
+    24 00000024 48FFC3                  	inc rbx
+    25 00000027 8A08                    	mov cl, [rax]
+    26 00000029 80F900                  	cmp cl, 0
+    27 0000002C 75F3                    	jne _printLoop
+    28                                  
+    29 0000002E B801000000              	mov rax, 1
+    30 00000033 BF01000000              	mov rdi, 1
+    31 00000038 5E                      	pop rsi
+    32 00000039 4889DA                  	mov rdx, rbx
+    33 0000003C 0F05                    	syscall	
+    34 0000003E C3                      	ret
+    35                                  
