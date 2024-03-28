@@ -1,0 +1,24 @@
+     1                                  
+     2                                  global _start 	; linker entry point
+     3                                  
+     4                                  section .data
+     5 00000000 48656C6C6F2C20576F-     	msg db "Hello, World", 0x0A 	; 10 = ' '
+     5 00000009 726C640A           
+     6                                  	len equ $ - msg
+     7                                  
+     8                                  section .text
+     9                                  
+    10                                  _start:
+    11 00000000 BB68000000              	mov ebx, 104
+    12 00000005 B958010000              	mov ecx, 344
+    13 0000000A B801000000              	mov eax, 1
+    14 0000000F 39D9                    	cmp ecx, ebx
+    15 00000011 7F05                    	jg skip
+    16                                  	
+    17 00000013 BB0D000000              	mov ebx, 13
+    18                                  
+    19                                  skip:
+    20 00000018 CD80                    	int 0x80
+    21                                  
+    22                                  
+    23                                  
