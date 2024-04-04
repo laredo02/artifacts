@@ -1,0 +1,71 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <gst/gst.h>
+
+int main (int argc, char *argv[])
+{
+  GstElement *pipeline, *source, *sink;
+  GstBus *bus;
+  GstMessage *msg;
+  GstStateChangeReturn ret;
+
+  gst_init(&argc, &argv); // Init GStreamer
+  source = gst_element_factory_make("videotestsrc", "source"); // Create elements
+  sink = gst_element_factory_make("autovideosink", "sink");
+  /*
+    gst_element_factory_make() creates new GStreamer elements given the type of element
+    and the name of the particular instance of the element type.
+  */
+
+  pipeline = gst_pipeline_new("test-pipeline"); // Create pipeline
+  
+  if (!pipeline || !source || !sink) { // check element creation
+    g_printerr("Not all elements could be created\n");
+    return EXIT_FAILURE;
+  }
+
+  gst_bin_add_many(GST_BIN(pipeline), source, sink, NULL); // Build the pipeline
+  if (gst_element_link(source, sink) != TRUE) {
+    g_printerr("Elements could not be linked\n");
+    gst_object_unref(pipeline);
+    return exit_failure;
+  }
+
+  g_object_set(source, "pattern", 0, null); // modify source's properties
+
+  ret = gst_element_set_state(pipeline, gst_state_playing); // start playing
+  if (ret = gst_state_change_failure) {
+    g_printerr("unable to set the pipeline to the playing state.\n");
+  }
+
+  bus = gst_element_get_bus(pipeline); // wait until error eos
+  msg = gst_bus_timed_pop_filtered(bus, gst_clock_time_none, gst_message_error | gst_message_eos);
+
+  if (msg != null) {
+    gerror *err;
+    gchar *debug_info;
+    switch (gst_message_type(msg)) {
+    case gst_message_error:
+      gst_message_parse_error(msg, &err, &debug_info);
+      g_printerr("error received from element %s: %s\n", gst_object_name(msg->src), err->message);
+      g_printerr("debugging information: %s\n", debug_info? debug_info: "none");
+      g_clear_error(&err);
+      g_free(debug_info);
+      break;
+    case gst_message_eos:
+      g_print("end of stream reached.\n");
+      break;
+    default:
+      g_printerr("unexpected message received.\n");
+      break;
+    }
+    gst_message_unref(msg);
+  }
+
+  gst_object_unref(bus);
+  gst_element_set_state(pipeline, gst_state_null);
+  gst_object_unref(pipeline);
+  return 0;
+}

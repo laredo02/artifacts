@@ -1,0 +1,28 @@
+
+	int num_lines = 0, num_chars = 0, num_digits = 0, num_alpha = 0;
+
+	int getId () {
+		static int id = 0;
+		++id;
+		return id;
+	}
+
+DIGIT	[0-9]
+
+%%
+
+id	printf("%d", getId()); num_chars+=2;
+\n	num_lines++; num_chars++;
+.	num_chars++;
+DIGIT	num_digits++;
+
+
+%%
+
+int yywrap() {}
+int main () {
+	yylex();
+	printf("#lines: %d\n#chars: %d\n", num_lines, num_chars);
+	printf("#digits: %d\n#alpha: %d\n", num_digits, num_alpha);
+}
+
