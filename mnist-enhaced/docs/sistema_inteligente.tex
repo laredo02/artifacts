@@ -1,0 +1,137 @@
+% Created 2023-01-29 Sun 19:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Sistema Inteligente para detección de digitos escritas mediante gestos}
+\label{sec:orgede9837}
+El sistema inteligente propuesto es capaz de reconocer dígitos obtenidos mediante métodos de visión por computador. Es decir, útilizando el dedo índice de una mano, y "dibujando en el aire", el sistema será capaz de reconocer el dígito dibujado.
+La aplicación se ejecuta de la siguiente manera:
+\begin{enumerate}
+\item Se abrirán dos ventanas
+\begin{enumerate}
+\item Ventana 1 (\textbf{"Camera Capture"}): La primera Ventana contendrá el video en tiempo real capturado por la webcam mediante las OpenCV
+\item Ventana 2 (\textbf{"MNIST Image"}): Esta ventana contendrá la imagen que posteriormente será procesada para reconocer el dígito que se quiere evaluar.
+\end{enumerate}
+\item El usuario tiene 3 opciones:
+\begin{enumerate}
+\item Pulsar \textbf{"d"}: Alternará entre modo Dibujar y modo No Dibujar.
+\item Pulsar \textbf{"m"}: Pasará la imagen mostrada en la ventana "MNIST Image" por varios filtros para procesarla con el modelo de IA y reconocer el dígito dibujado
+\item Pulsar \textbf{"q"}: Salir de la aplicación
+\end{enumerate}
+\end{enumerate}
+\subsection{Herramientas necesarias}
+\label{sec:orgd5613a3}
+Para poder llevar a cabo la implementación de la idea se hará uso de las siguientes herramientas:
+\begin{itemize}
+\item \emph{python}
+\item \emph{opencv}
+\item \emph{mediapipe}
+\item \emph{numpy}
+\item \emph{tensorflow}
+\item \emph{keras}
+\end{itemize}
+
+\subsubsection{Resolución de dependencias}
+\label{sec:org9f11fdc}
+Para resolver las dependencias de las mismas es suficiente con instalar \emph{\textbf{python}} y \emph{\textbf{pip}} en tu sistema y ejecutar los siguientes comandos:
+\begin{verbatim}
+pip install opencv-python            
+pip install opencv-contrib-python
+pip install mediapipe
+pip install numpy
+pip install tensorflow
+pip install keras
+\end{verbatim}
+La idea principal es mediante la libreria opencv capturar video desde una cámara web. Para posteriormente filtrar las imagenes y pasarlas por el modelo de mediapipe para detecciónn de manos, lo que permitirá conocer la posición de cada dedo. De esta manera será más fácil administrar el reconocimiento de gestos. Además de utilizar un método de ML, también se hará uso de las técnicas de segmentación y descripción vistas en clase así como de preproceso y filtrado.
+
+\section{Para entrenar el modelo y generar model.h5}
+\label{sec:org2924713}
+\begin{verbatim}
+cd mnist_model
+python mnist.py
+\end{verbatim}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/mnist_model_generation.png}
+\caption{\label{fig:org45f324a}salida de consola después de entrenar el modelo}
+\end{figure}
+
+\section{Para probar el modelo utilizando el ratón como medio para dibujar}
+\label{sec:org84a7d66}
+\begin{verbatim}
+python testmodel.py
+\end{verbatim}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/test_model.png}
+\caption{\label{fig:org985b606}Ventana para dibujar con el ratón}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/test_model_output.png}
+\caption{\label{fig:orgbcf16d1}Predicción realizada sobre la imagen después de reescalarla a 28x28 (Pulsar ESC una vez para mostrar la imagen 28x28 y volver a pulsar para realizar la predicción)}
+\end{figure}
+
+\section{Para utilizar el modelo ya entrenado y probado con mediapipe y el reconocimiento de manos}
+\label{sec:org71e0bdf}
+\begin{verbatim}
+python main.py
+\end{verbatim}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/main.png}
+\caption{\label{fig:org1149ead}Aparecen las ventanas para dibujar}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/main2.png}
+\caption{\label{fig:org70846a1}Pulsando "D" pasamos a modo Dibujar, realizamos el dibujo y volviendo a pulsar "D" salimos del modo dibujo}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/main3.png}
+\caption{\label{fig:org4c6e3a8}Pulsando "M" aplicamos el modelo a la imagen reescalada a 28x28}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{./imagenes/main4.png}
+\caption{\label{fig:org1b5ba45}Predicción del sistema. Pulsar "M" otra vez}
+\end{figure}
+
+\section{Aspectos concretos del proyecto}
+\label{sec:org4b34a73}
+El proyecto consta de 3 ficheros con extensión \emph{".py"}
+\begin{verbatim}
+- mnist.py # Corresponde con el código para generar el modelo "model.h5". Es decir, es el programa que entrena la red de neuronas para reconocer dígitos del dataset MNIST.
+- testmodel # Se trata de un entorno de pruabas que he utilizado para comprobar que el sistema funciona. Permite dibujar dígitos en una ventana pero con el ratón, lo que agiza el proceso de desarrollo de la aplicación. 
+- main.py #El fichero que contiene el programa completo incluye las funcionalidades aportadas por mediapipe. Más adelante se explicará el funcionamiento.
+- model.h5 # Modelo generado por mnist.py.
+\end{verbatim}
+\textbf{Todos los fichero fuente listados contienen comentarios suficientemente descriptivos como para entender el funcionamiento de los diversos elementos que componen la aplicación}
+\end{document}

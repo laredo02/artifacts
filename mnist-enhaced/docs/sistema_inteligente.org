@@ -1,0 +1,79 @@
+
+* Sistema Inteligente para detección de digitos escritas mediante gestos
+  El sistema inteligente propuesto es capaz de reconocer dígitos obtenidos mediante métodos de visión por computador. Es decir, útilizando el dedo índice de una mano, y "dibujando en el aire", el sistema será capaz de reconocer el dígito dibujado.
+  La aplicación se ejecuta de la siguiente manera:
+1. Se abrirán dos ventanas
+   1) Ventana 1 (*"Camera Capture"*): La primera Ventana contendrá el video en tiempo real capturado por la webcam mediante las OpenCV
+   2) Ventana 2 (*"MNIST Image"*): Esta ventana contendrá la imagen que posteriormente será procesada para reconocer el dígito que se quiere evaluar.
+2. El usuario tiene 3 opciones:
+   1) Pulsar *"d"*: Alternará entre modo Dibujar y modo No Dibujar.
+   2) Pulsar *"m"*: Pasará la imagen mostrada en la ventana "MNIST Image" por varios filtros para procesarla con el modelo de IA y reconocer el dígito dibujado
+   3) Pulsar *"q"*: Salir de la aplicación
+** Herramientas necesarias
+  Para poder llevar a cabo la implementación de la idea se hará uso de las siguientes herramientas:
+- /python/
+- /opencv/
+- /mediapipe/
+- /numpy/
+- /tensorflow/
+- /keras/
+
+*** Resolución de dependencias
+Para resolver las dependencias de las mismas es suficiente con instalar /*python*/ y /*pip*/ en tu sistema y ejecutar los siguientes comandos:
+#+BEGIN_SRC
+  pip install opencv-python            
+  pip install opencv-contrib-python
+  pip install mediapipe
+  pip install numpy
+  pip install tensorflow
+  pip install keras
+#+END_SRC
+La idea principal es mediante la libreria opencv capturar video desde una cámara web. Para posteriormente filtrar las imagenes y pasarlas por el modelo de mediapipe para detecciónn de manos, lo que permitirá conocer la posición de cada dedo. De esta manera será más fácil administrar el reconocimiento de gestos. Además de utilizar un método de ML, también se hará uso de las técnicas de segmentación y descripción vistas en clase así como de preproceso y filtrado.
+
+* Para entrenar el modelo y generar model.h5
+#+BEGIN_SRC
+  cd mnist_model
+  python mnist.py
+#+END_SRC
+#+CAPTION: salida de consola después de entrenar el modelo
+#+NAME: fig:fig1
+[[./imagenes/mnist_model_generation.png]]
+
+* Para probar el modelo utilizando el ratón como medio para dibujar
+#+BEGIN_SRC
+  python testmodel.py
+#+END_SRC
+#+CAPTION: Ventana para dibujar con el ratón
+#+NAME: fig:fig2
+[[./imagenes/test_model.png]]
+
+#+CAPTION: Predicción realizada sobre la imagen después de reescalarla a 28x28 (Pulsar ESC una vez para mostrar la imagen 28x28 y volver a pulsar para realizar la predicción)
+#+NAME: fig:fig3
+[[./imagenes/test_model_output.png]]
+
+* Para utilizar el modelo ya entrenado y probado con mediapipe y el reconocimiento de manos
+#+BEGIN_SRC
+  python main.py
+#+END_SRC
+#+CAPTION: Aparecen las ventanas para dibujar
+#+NAME: fig:fig4
+[[./imagenes/main.png]]
+#+CAPTION: Pulsando "D" pasamos a modo Dibujar, realizamos el dibujo y volviendo a pulsar "D" salimos del modo dibujo
+#+NAME: fig:fig5
+[[./imagenes/main2.png]]
+#+CAPTION: Pulsando "M" aplicamos el modelo a la imagen reescalada a 28x28
+#+NAME: fig:fig6
+[[./imagenes/main3.png]]
+#+CAPTION: Predicción del sistema. Pulsar "M" otra vez
+#+NAME: fig:fig7
+[[./imagenes/main4.png]]
+
+* Aspectos concretos del proyecto
+El proyecto consta de 3 ficheros con extensión /".py"/
+#+BEGIN_SRC
+- mnist.py # Corresponde con el código para generar el modelo "model.h5". Es decir, es el programa que entrena la red de neuronas para reconocer dígitos del dataset MNIST.
+- testmodel # Se trata de un entorno de pruabas que he utilizado para comprobar que el sistema funciona. Permite dibujar dígitos en una ventana pero con el ratón, lo que agiza el proceso de desarrollo de la aplicación. 
+- main.py #El fichero que contiene el programa completo incluye las funcionalidades aportadas por mediapipe. Más adelante se explicará el funcionamiento.
+- model.h5 # Modelo generado por mnist.py.
+#+END_SRC
+*Todos los fichero fuente listados contienen comentarios suficientemente descriptivos como para entender el funcionamiento de los diversos elementos que componen la aplicación*

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-29 Sun 19:46 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org55308ed">1. Sistema Inteligente para detección de digitos escritas mediante gestos</a>
+<ul>
+<li><a href="#orga79da7e">1.1. Herramientas necesarias</a>
+<ul>
+<li><a href="#orgc514615">1.1.1. Resolución de dependencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcff23da">2. Para entrenar el modelo y generar model.h5</a></li>
+<li><a href="#org1ac2e7d">3. Para probar el modelo utilizando el ratón como medio para dibujar</a></li>
+<li><a href="#org61d1c22">4. Para utilizar el modelo ya entrenado y probado con mediapipe y el reconocimiento de manos</a></li>
+<li><a href="#org9007217">5. Aspectos concretos del proyecto</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org55308ed" class="outline-2">
+<h2 id="org55308ed"><span class="section-number-2">1</span> Sistema Inteligente para detección de digitos escritas mediante gestos</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+El sistema inteligente propuesto es capaz de reconocer dígitos obtenidos mediante métodos de visión por computador. Es decir, útilizando el dedo índice de una mano, y "dibujando en el aire", el sistema será capaz de reconocer el dígito dibujado.
+La aplicación se ejecuta de la siguiente manera:
+</p>
+<ol class="org-ol">
+<li>Se abrirán dos ventanas
+<ol class="org-ol">
+<li>Ventana 1 (<b>"Camera Capture"</b>): La primera Ventana contendrá el video en tiempo real capturado por la webcam mediante las OpenCV</li>
+<li>Ventana 2 (<b>"MNIST Image"</b>): Esta ventana contendrá la imagen que posteriormente será procesada para reconocer el dígito que se quiere evaluar.</li>
+</ol></li>
+<li>El usuario tiene 3 opciones:
+<ol class="org-ol">
+<li>Pulsar <b>"d"</b>: Alternará entre modo Dibujar y modo No Dibujar.</li>
+<li>Pulsar <b>"m"</b>: Pasará la imagen mostrada en la ventana "MNIST Image" por varios filtros para procesarla con el modelo de IA y reconocer el dígito dibujado</li>
+<li>Pulsar <b>"q"</b>: Salir de la aplicación</li>
+</ol></li>
+</ol>
+</div>
+<div id="outline-container-orga79da7e" class="outline-3">
+<h3 id="orga79da7e"><span class="section-number-3">1.1</span> Herramientas necesarias</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Para poder llevar a cabo la implementación de la idea se hará uso de las siguientes herramientas:
+</p>
+<ul class="org-ul">
+<li><i>python</i></li>
+<li><i>opencv</i></li>
+<li><i>mediapipe</i></li>
+<li><i>numpy</i></li>
+<li><i>tensorflow</i></li>
+<li><i>keras</i></li>
+</ul>
+</div>
+
+<div id="outline-container-orgc514615" class="outline-4">
+<h4 id="orgc514615"><span class="section-number-4">1.1.1</span> Resolución de dependencias</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Para resolver las dependencias de las mismas es suficiente con instalar <i><b>python</b></i> y <i><b>pip</b></i> en tu sistema y ejecutar los siguientes comandos:
+</p>
+<pre class="example">
+pip install opencv-python            
+pip install opencv-contrib-python
+pip install mediapipe
+pip install numpy
+pip install tensorflow
+pip install keras
+</pre>
+<p>
+La idea principal es mediante la libreria opencv capturar video desde una cámara web. Para posteriormente filtrar las imagenes y pasarlas por el modelo de mediapipe para detecciónn de manos, lo que permitirá conocer la posición de cada dedo. De esta manera será más fácil administrar el reconocimiento de gestos. Además de utilizar un método de ML, también se hará uso de las técnicas de segmentación y descripción vistas en clase así como de preproceso y filtrado.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcff23da" class="outline-2">
+<h2 id="orgcff23da"><span class="section-number-2">2</span> Para entrenar el modelo y generar model.h5</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+cd mnist_model
+python mnist.py
+</pre>
+
+<div id="orgcdc3731" class="figure">
+<p><img src="./imagenes/mnist_model_generation.png" alt="mnist_model_generation.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>salida de consola después de entrenar el modelo</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ac2e7d" class="outline-2">
+<h2 id="org1ac2e7d"><span class="section-number-2">3</span> Para probar el modelo utilizando el ratón como medio para dibujar</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+python testmodel.py
+</pre>
+
+<div id="org75f685a" class="figure">
+<p><img src="./imagenes/test_model.png" alt="test_model.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Ventana para dibujar con el ratón</p>
+</div>
+
+
+<div id="org64a3e93" class="figure">
+<p><img src="./imagenes/test_model_output.png" alt="test_model_output.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Predicción realizada sobre la imagen después de reescalarla a 28x28 (Pulsar ESC una vez para mostrar la imagen 28x28 y volver a pulsar para realizar la predicción)</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61d1c22" class="outline-2">
+<h2 id="org61d1c22"><span class="section-number-2">4</span> Para utilizar el modelo ya entrenado y probado con mediapipe y el reconocimiento de manos</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+python main.py
+</pre>
+
+<div id="orgb3c6713" class="figure">
+<p><img src="./imagenes/main.png" alt="main.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Aparecen las ventanas para dibujar</p>
+</div>
+
+<div id="org9d811dc" class="figure">
+<p><img src="./imagenes/main2.png" alt="main2.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Pulsando "D" pasamos a modo Dibujar, realizamos el dibujo y volviendo a pulsar "D" salimos del modo dibujo</p>
+</div>
+
+<div id="org6b3990d" class="figure">
+<p><img src="./imagenes/main3.png" alt="main3.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Pulsando "M" aplicamos el modelo a la imagen reescalada a 28x28</p>
+</div>
+
+<div id="org3cbada5" class="figure">
+<p><img src="./imagenes/main4.png" alt="main4.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Predicción del sistema. Pulsar "M" otra vez</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9007217" class="outline-2">
+<h2 id="org9007217"><span class="section-number-2">5</span> Aspectos concretos del proyecto</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+El proyecto consta de 3 ficheros con extensión <i>".py"</i>
+</p>
+<pre class="example">
+- mnist.py # Corresponde con el código para generar el modelo "model.h5". Es decir, es el programa que entrena la red de neuronas para reconocer dígitos del dataset MNIST.
+- testmodel # Se trata de un entorno de pruabas que he utilizado para comprobar que el sistema funciona. Permite dibujar dígitos en una ventana pero con el ratón, lo que agiza el proceso de desarrollo de la aplicación. 
+- main.py #El fichero que contiene el programa completo incluye las funcionalidades aportadas por mediapipe. Más adelante se explicará el funcionamiento.
+- model.h5 # Modelo generado por mnist.py.
+</pre>
+<p>
+<b>Todos los fichero fuente listados contienen comentarios suficientemente descriptivos como para entender el funcionamiento de los diversos elementos que componen la aplicación</b>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2023-01-29 Sun 19:46</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
